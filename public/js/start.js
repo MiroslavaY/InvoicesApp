@@ -23,7 +23,7 @@
 
     }]);
 
-    myApp.factory("Products",  function ($resource) {
+    myApp.factory("Products", function ($resource) {
 
         return $resource(paths.oneProductPath, {product_id: '@id'},
 
@@ -48,7 +48,7 @@
             $scope.modalShown = !$scope.modalShown;
         };
 
-        $rootScope.updateProduct= function (data) {
+        $rootScope.updateProduct = function (data) {
             $rootScope.data = data;
             $rootScope.upd = true;
             $scope.modalShown = true;
@@ -74,21 +74,10 @@
             })
         };
 
-       /* $scope.editProduct=function (position,index,n,p) {
-            $rootScope.data={id: index,name: n, price: p, pos: position};
-            $scope.modalShown = true;
-        } */
+
     });
 
-    /*  myApp.controller('modalController', function ($scope) {
 
-     $scope.modalShown = false;
-     $scope.toggleModal = function() {
-     $scope.modalShown = !$scope.modalShown;
-     };
-
-     });
-     */
 
     //Directives
 
@@ -105,11 +94,11 @@
             // transclude: true,
             link: function (scope, element, attrs) {
 
-                    //PROBLEMES HERE
-                    scope.attr = {
-                        name: $rootScope.data.name,
-                        price: $rootScope.data.price
-                    };
+                //PROBLEMES HERE
+                scope.attr = {
+                    name: $rootScope.data.name,
+                    price: $rootScope.data.price
+                };
 
 
                 scope.dialogStyle = {};
@@ -120,18 +109,18 @@
 
                 scope.hideModal = function () {
                     this.show = false;
-                    $rootScope.data=null;
+                    $rootScope.data = null;
                 };
 
                 scope.saveHandler = function (name, price) {
-                    if($rootScope.data){
+                    if ($rootScope.data) {
 
-                        Products.update({product_id: $rootScope.data.id},{name : name, price: price},function(){
+                        Products.update({product_id: $rootScope.data.id}, {name: name, price: price}, function () {
                                 console.log('updated');
                             }
                         );
                     }
-                    else{
+                    else {
                         $rootScope.addProduct(name, price);
                     }
 
