@@ -14,19 +14,15 @@
 <body >
     <h1>#Test task</h1>
 
-    <div class="wrapper" >
+    <div class="wrapper" ng-controller="invoicesCtrl" >
         <h2>Products</h2>
-        <div ng-controller="modalController">
+        <div>
             <button class="btn btn-default" ng-click="toggleModal()">Add</button>
             <modal-dialog show='modalShown' width='40%'>
-                <h2>Add new product</h2>
-                <p>name</p>
-                <input ng-model="product" type="text">
-                <p>price</p>
-                <input type="text">
+
             </modal-dialog>
         </div>
-        <table class="table  table-striped table-bordered table-hover" ng-controller="invoicesCtrl">
+        <table class="table  table-striped table-bordered table-hover">
             <thead class="table-head">
             <tr>
                 <th>№</th>
@@ -41,13 +37,18 @@
                 <td>{{prod.name}}</td>
                 <td>{{prod.price| currency}}</td>
                 <td>
-                    <button type="button" class="btn btn-success" ng-click="addProduct()">Edit</button>
+
+
+                    <button type="button" class="btn btn-success" ng-click="updateProduct({index:$index,id:prod.id,name:prod.name,price:prod.price})">Edit</button>
                     <button type="button" class="btn btn-danger" ng-click="deleteProduct(prod.id, $index)">delete</button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
+    <noscript>
+        <div>Javascript is either disabled or not supported in your browser. Please enable it or use a Javascript enabled browser.</div>
+    </noscript>
     <script src="libs/angular/angular.min.js"></script>
     <script src="libs/angular-resource/angular-resource.min.js"></script>
     <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>

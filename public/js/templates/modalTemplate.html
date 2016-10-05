@@ -1,13 +1,23 @@
 <div class='ng-modal' ng-show='show'>
     <div class='ng-modal-overlay' ng-click='hideModal()'></div>
     <div class='ng-modal-dialog' ng-style='dialogStyle'>
-        <div class='ng-modal-dialog-content 'ng-transclude >
+        <form name="myForm">
+            <div class='ng-modal-dialog-content ' >
 
-        </div>
-        <div class='ng-modal-dialog-controls'>
-            <button class="btn btn-success" ng-click="addProduct()">ok</button>
-            <button class="btn btn-info" ng-click="hideModal()">cancel</button>
-        </div>
+                <h2>Add new product</h2>
+                <p>name</p>
+                <input  type="text" ng-model="attr.name" >
+
+                <p>price</p>
+                <input   type="text" ng-model="attr.price">
+            </div>
+            <div class='ng-modal-dialog-controls'>
+                <input type="button" class="btn btn-success" value="ok" ng-click="saveHandler(attr.name, attr.price)" />
+                <input type="button" class="btn btn-info" ng-click="hideModal()" value="cancel"/>
+
+
+            </div>
+            <form>
 
     </div>
 </div>
